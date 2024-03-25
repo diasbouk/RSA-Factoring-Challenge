@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: factors <file>"
+    exit 1
+fi
+
+if [[ ! -f $1 ]]; then
+    echo "File $1 dosen't exist"
+fi
+for line in $1; do
+  for ((i = 0; i < $line; i++)); do
+    if [[ (( $line % i )) == 0 ]]; then
+      echo "$line=$i*$(($line  % $i)) "
+    fi
+  done
